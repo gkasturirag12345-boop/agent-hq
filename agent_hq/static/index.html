@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent HQ</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>AGENT HQ</a>
+    <nav class="nav" id="nav" aria-label="Projects"></nav>
+    <div class="meta">
+      <span class="ro">READ-ONLY</span>
+      <span id="readat">loading…</span>
+      <button id="refresh" type="button">Refresh</button>
+    </div>
+  </header>
+
+  <section class="legend" aria-label="How to read this board">
+    <span class="badge rec">Recorded status</span><span>as written in TASK_BOARD.md</span>
+    <span class="badge agent">Agent-reported</span><span>a handoff's own status — not task completion</span>
+    <span class="badge verified">Verified complete</span><span>only for DONE (human-approved, CLAUDE.md §6)</span>
+    <span class="badge warn">Inconsistency</span><span>shown, never corrected</span>
+    <span class="badge obs obs-active">observed: active</span><span>from file times and tool names — not progress</span>
+  </section>
+
+  <main id="main"></main>
+
+  <footer class="foot">
+    Recorded status from the Markdown records; observed activity from transcript metadata only (file times, tool names, sub-agent type and finished flag). Message content is never kept or shown: transcript lines are parsed in memory only to take tool names and timestamps.
+  </footer>
+  <script src="/scene.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
