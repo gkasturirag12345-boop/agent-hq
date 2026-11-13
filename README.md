@@ -18,13 +18,20 @@ Standard library only, with no dependencies, build step, external fonts or CDNs.
 git clone https://github.com/gkasturirag12345-boop/agent-hq.git
 cd agent-hq
 python3 -B -m agent_hq.server --root examples/demo-workspace
-# open http://127.0.0.1:8780/
+# then open http://127.0.0.1:8780/ in your browser; stop with Ctrl+C
 ```
 
-To use it on your own workspace:
+If port 8780 is already in use (for example, because the dashboard is already running for another workspace), choose another port and open that one instead:
 ```bash
-python3 -B -m agent_hq.server --root /path/to/your/workspace   # --port 8780 by default
+python3 -B -m agent_hq.server --root examples/demo-workspace --port 8781
+# open http://127.0.0.1:8781/
 ```
+
+To use it on your own workspace, point `--root` at the folder that contains `PROJECTS/`:
+```bash
+python3 -B -m agent_hq.server --root ~/path/to/your-workspace
+```
+Live activity appears once Claude Code sessions have been run inside that folder; the demo workspace has none, so its office shows "no transcript folder — activity unknown".
 
 Requires Python 3.9 or newer and a modern browser.
 

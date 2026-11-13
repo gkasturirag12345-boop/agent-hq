@@ -104,7 +104,11 @@ def main():
     ROOT = os.path.abspath(args.root)
     if not os.path.isdir(os.path.join(ROOT, "PROJECTS")):
         sys.exit(f"{ROOT} has no PROJECTS/ folder; pass --root <workspace>")
-    srv = ThreadingHTTPServer((HOST, args.port), Handler)
+    try:
+        srv = ThreadingHTTPServer((HOST, args.port), Handler)
+    except OSError as exc:
+        sys.exit(f"Port {args.port} on {HOST} is not available ({exc.strerror}). "
+                 f"Is the dashboard already running? Use another port, e.g. --port {args.port + 1}")
     print(f"Agent HQ (read-only): http://{HOST}:{args.port}/   workspace: {ROOT}")
     try:
         srv.serve_forever()
